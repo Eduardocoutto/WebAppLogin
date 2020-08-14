@@ -1,0 +1,67 @@
+﻿@model WebAppLogin.Models.Usuario
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Remover</h2>
+<p></p>
+
+<h4>Deseja realmente excluir?</h4>
+<div>
+    <h3>@ViewBag.Message</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Login)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Login)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Senha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Senha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Admin)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Admin)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+
+            <input type="submit" value="Delete" class="btn btn-outline-primary" /> |
+            <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Voltar", "Index")</button>
+        </div>
+    }
+</div>

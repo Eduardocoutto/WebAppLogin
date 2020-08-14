@@ -1,0 +1,46 @@
+﻿@model WebAppLogin.Models.UsuarioRecuperar
+
+@{
+    ViewBag.Title = "Recuperar";
+}
+
+<h2>Recuperar Senha</h2>
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <hr />
+    <h5>Informe o endereço de email, para que seja enviado um link, contendo instruções para redefinição da senha.</h5>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Enviar" class="btn btn-default" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <h5>@ViewBag.Message</h5>
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Voltar", "Entrar")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,67 @@
+﻿
+@model X.PagedList.PagedList<WebAppLogin.Models.Usuario>
+@using X.PagedList.Mvc
+@{
+    ViewBag.Title = "Lista Login";
+}
+
+<h2>Usuários</h2>
+
+<button type="button" class="btn">@Html.ActionLink("Novo Registro", "Create")</button>
+<button type="button" class="btn">@Html.ActionLink("Atualizar", "Index")</button>
+<button type="button" class="btn">@Html.ActionLink("Sair", "entrar", "login")</button>
+
+<div class="table-responsive">
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayName("Email")
+            </th>
+            <th>
+                @Html.DisplayName("Login")
+            </th>
+            <th>
+                @Html.DisplayName("Senha")
+            </th>
+            <th>
+                @Html.DisplayName("Status")
+            </th>
+            <th>
+                @Html.DisplayName("Admin")
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Login)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Senha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Admin)
+                </td>
+                <td>
+                    <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario })</button>
+                    <button type="button" class="btn btn-outline-primary">@Html.ActionLink("Excluir", "Delete", new { id = item.IdUsuario })</button>
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>
+Página @Model.PageNumber de @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index", new { pagina = page }))
+
+
